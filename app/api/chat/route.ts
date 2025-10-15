@@ -34,8 +34,11 @@ function getFallbackResponse(message: string): string {
 }
 
 export async function POST(request: NextRequest) {
+  let message = ""
   try {
-    const { message, ticketId } = await request.json()
+    const body = await request.json()
+    message = body.message
+    const ticketId = body.ticketId
 
     const supabase = await createClient()
     // Optional authentication - allow testing without login
@@ -163,8 +166,8 @@ Be helpful, concise, and professional. Respond in the user's preferred language 
   } catch (error) {
     console.error("Chat API error:", error)
     
-    // Fix the undefined message error by using the message parameter
-    const fallbackResponse = getFallbackResponse(message || "")
+    // Use fallback response with the message from outer scope
+    const fallbackResponse = getFallbackResponse(message || "help")
     return NextResponse.json({ response: fallbackResponse })
   }
 }
