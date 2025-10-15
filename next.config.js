@@ -8,9 +8,6 @@ const nextConfig = {
     unoptimized: true,
   },
   
-  // Disable telemetry to avoid permission issues
-  telemetry: false,
-  
   // Environment variables
   env: {
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -22,6 +19,11 @@ const nextConfig = {
   // Optimize for production
   swcMinify: true,
   reactStrictMode: true,
+  
+  // TypeScript configuration
+  typescript: {
+    ignoreBuildErrors: false,
+  },
 }
 
 module.exports = nextConfig
