@@ -289,10 +289,10 @@ export default function DashboardPage() {
                             <div className="flex items-center gap-2 mb-2">
                               <h3 className="font-semibold">{ticket.title}</h3>
                               <Badge variant={getStatusColor(ticket.status)}>
-                                {t(`status.${ticket.status}`, ticket.status)}
+                                {String(t(`status.${ticket.status}`, ticket.status))}
                               </Badge>
                               <Badge variant={getPriorityColor(ticket.priority)}>
-                                {t(`priority.${ticket.priority}`, ticket.priority)}
+                                {String(t(`priority.${ticket.priority}`, ticket.priority))}
                               </Badge>
                               {ticket.language && ticket.language !== "en" && (
                                 <Badge variant="outline" className="flex items-center gap-1">
